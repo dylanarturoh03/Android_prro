@@ -19,6 +19,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -39,6 +40,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
@@ -71,7 +74,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Title(modifier: Modifier = Modifier) {
     Text(
-        text = "Doggy Ages ",
+        text = "Años perrunos",
         modifier = modifier
             .padding(
                 start = 12.dp,
@@ -90,14 +93,17 @@ fun ButtonAge(modifier: Modifier = Modifier)
         onClick = {
 
         },
+        colors = ButtonDefaults.buttonColors(containerColor = Color(92, 166, 130)),
+        shape = RectangleShape,
         modifier = Modifier
             .padding(
                 start = 12.dp,
                 top = 20.dp
             )
+
     ) {
         Icon(
-            Icons.Filled.Face,
+            Icons.Filled.ExitToApp,
             contentDescription = "Button to convert ages",
             modifier = Modifier.
             size(ButtonDefaults.IconSize)
@@ -109,7 +115,7 @@ fun ButtonAge(modifier: Modifier = Modifier)
 
 // TextFields
 @Composable
-fun TextFieldWithIcons() {
+fun TextFieldWithIcons(modifier: Modifier = Modifier) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     return OutlinedTextField(
         value = text,
@@ -119,8 +125,11 @@ fun TextFieldWithIcons() {
         onValueChange = {
             text = it
         },
-        label = { Text(text = "Enter you age, human.") },
+        label = { Text(text = "Enter your age, human.") },
         placeholder = { Text(text = "Age") },
+        modifier = Modifier.padding(
+            start = 18.dp
+        )
     )
 }
 
@@ -153,11 +162,11 @@ fun GreetingPreview() {
 fun imageDoggy(modifier:Modifier = Modifier)
 {
     Column (
-        horizontalAlignment =Alignment.CenterHorizontally,
+        //horizontalAlignment =Alignment.CenterHorizontally,
             modifier = Modifier
             .fillMaxSize()
     ){
-        val imagen = painterResource(id = R.drawable.image)
+        val imagen = painterResource(id = R.drawable.perro_humano)
         Image(painter = imagen,
             contentDescription = null,
             contentScale = ContentScale.Crop,
